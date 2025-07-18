@@ -1,0 +1,19 @@
+<form method="post">
+  {% csrf_token %}
+  <div class="mb-4">
+    <label class="block mb-2 font-medium">Course</label>
+    {{ form.course }}
+  </div>
+
+  <div class="mb-4">
+    <label class="block mb-2 font-medium">Rating</label>
+    {{ form.rating }}
+  </div>
+
+  <div class="mb-4">
+    <label class="block mb-2 font-medium">Comments</label>
+    {{ form.comments }}
+  </div>
+
+  <button type="submit" class="bg-purple-600 text-white px-4 py-2 rounded">Submit</button>
+</form>

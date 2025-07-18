@@ -1,0 +1,17 @@
+{% extends 'feedback/base.html' %}
+{% block content %}
+<h2 class="mb-4">Your Feedback</h2>
+<a href="{% url 'feedback' %}" class="btn btn-info mb-3">Give Feedback</a>
+
+<hr>
+<ul class="list-group">
+  {% for fb in feedbacks %}
+  <li class="list-group-item">
+    <strong>{{ fb.course }}</strong> — Rated: {{ fb.rating }}/5
+    <p class="text-muted">{{ fb.comments }}</p>
+  </li>
+  {% empty %}
+  <li class="list-group-item text-warning">No feedback submitted yet.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
