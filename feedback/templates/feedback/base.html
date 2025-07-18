@@ -6,61 +6,63 @@
   <title>Feedback System</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Custom CSS -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#4f46e5', 
+            secondary: '#06b6d4', 
+            accent: '#facc15', 
+          }
+        }
+      }
+    }
+  </script>
+
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body class="bg-light d-flex flex-column min-vh-100">
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container-fluid">
-      <a class="navbar-brand fw-bold" href="{% url 'home' %}">📋 Feedback System</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+<body class="bg-gray-50 flex flex-col min-h-screen font-sans">
 
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+ 
+  <nav class="bg-gradient-to-r from-indigo-600 to-purple-600 shadow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="{% url 'home' %}" class="text-white font-bold text-xl flex items-center gap-2">
+          📋 <span>Feedback System</span>
+        </a>
+
+        <div class="flex items-center space-x-4">
           {% if user.is_authenticated %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'feedback' %}">Give Feedback</a>
-            </li>
-            <li class="nav-item">
-              <form method="post" action="{% url 'logout' %}" class="d-inline">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-link nav-link text-warning p-0 m-0" style="border: none;">Logout</button>
-              </form>
-            </li>
+            <a href="{% url 'dashboard' %}" class="text-white hover:text-yellow-300 font-medium">Dashboard</a>
+            <a href="{% url 'feedback' %}" class="text-white hover:text-yellow-300 font-medium">Give Feedback</a>
+            <form method="post" action="{% url 'logout' %}" class="inline">
+              {% csrf_token %}
+              <button type="submit" class="text-white hover:text-yellow-300 font-medium">Logout</button>
+            </form>
           {% else %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'login' %}">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'register' %}">Register</a>
-            </li>
+            <a href="{% url 'login' %}" class="text-white hover:text-yellow-300 font-medium">Login</a>
+            <a href="{% url 'register' %}" class="text-white hover:text-yellow-300 font-medium">Register</a>
           {% endif %}
-        </ul>
+        </div>
       </div>
     </div>
   </nav>
 
-  <!-- Main Content -->
-  <div class="container py-4">
-    {% block content %}{% endblock %}
-  </div>
+  <main class="flex-grow">
+    <div class="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+      {% block content %}
 
-  <!-- Footer -->
-  <footer class="bg-dark text-white text-center py-3 mt-auto">
-    <small>&copy; 2025 Student Feedback System. All rights reserved.</small>
+      {% endblock %}
+    </div>
+  </main>
+
+  <footer class="bg-gray-800 text-gray-200 text-center py-4 mt-8">
+    <p>&copy; {{ now|date:"Y" }} Student Feedback System. All rights reserved.</p>
   </footer>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

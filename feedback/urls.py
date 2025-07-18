@@ -9,4 +9,6 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(next_page='home'), name='logout'),
     path('dashboard/', views.dashboard, name='dashboard'),
     path('feedback/', views.give_feedback, name='feedback'),
+    path('feedback/delete/<int:pk>/', views.delete_feedback, name='delete_feedback'),
+
 ]

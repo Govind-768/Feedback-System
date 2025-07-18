@@ -1,26 +1,26 @@
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f8f9fa;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8fafc; 
+  color: #1f2937; 
 }
 
-h1, h2 {
-  color: #343a40;
-  font-weight: bold;
+h1, h2, h3 {
+  font-weight: 700;
+  color: #1e40af; 
 }
 
-.btn {
-  transition: 0.3s ease;
+a {
+  transition: all 0.3s ease;
 }
 
-.btn:hover {
+a:hover {
+  opacity: 0.85;
+}
+
+button {
+  transition: transform 0.2s ease;
+}
+
+button:hover {
   transform: scale(1.05);
-}
-
-.container {
-  max-width: 800px;
-}
-
-.card {
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  border-radius: 8px;
 }
